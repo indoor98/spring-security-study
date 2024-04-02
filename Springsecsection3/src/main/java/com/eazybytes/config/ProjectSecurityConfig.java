@@ -23,10 +23,12 @@ public class ProjectSecurityConfig {
     @Bean
     @Order(2147483642)
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((requests) -> {
+        http.csrf((csrf) ->
+                csrf.disable())
+                .authorizeHttpRequests((requests) -> {
             // ((AuthorizeHttpRequestsConfigurer.AuthorizedUrl)requests.anyRequest()).authenticated();
             requests.requestMatchers("/myAccount", "/myBalance", "/myCards", "/myLoans").authenticated()
-                    .requestMatchers("/contact", "/notices").permitAll()
+                    .requestMatchers("/contact", "/notices", "/register").permitAll()
                     .anyRequest().authenticated();
         });
         http.formLogin(Customizer.withDefaults());
@@ -60,10 +62,10 @@ public class ProjectSecurityConfig {
 //        return new InMemoryUserDetailsManager(admin, user);
 //    }
 
-    @Bean
-    public UserDetailsService userDetailsService(DataSource dataSource) {
-        return new JdbcUserDetailsManager(dataSource);
-    }
+//    @Bean
+//    public UserDetailsService userDetailsService(DataSource dataSource) {
+//        return new JdbcUserDetailsManager(dataSource);
+//    }
     
     @Bean
     public PasswordEncoder passwordEncoder() {

@@ -9,11 +9,13 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
+@Service
 public class EazyBankUserDetails implements UserDetailsService {
 
     private final CustomerRepository customerRepository;
@@ -32,6 +34,6 @@ public class EazyBankUserDetails implements UserDetailsService {
             authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority(customer.get(0).getRole()));
         }
-        return new User()
+        return new User(username, password, authorities); // 리턴할 때 UserDetails 인터페이스 타입으로 반환한다.
     }
 }
