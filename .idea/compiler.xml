@@ -2,22 +2,27 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springsecsection9" />
-        <module name="springsecsection10" />
         <module name="springsecsection5" />
         <module name="springsecsection6" />
         <module name="springsecsection7" />
         <module name="springsecsection8" />
+        <module name="springsecsection9" />
+        <module name="springsecsection13" />
+        <module name="springsecsection10" />
+        <module name="springsecOAUTH2GitHub" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springsecOAUTH2GitHub" options="-parameters" />
       <module name="springsecsection10" options="-parameters" />
+      <module name="springsecsection13" options="-parameters" />
       <module name="springsecsection5" options="-parameters" />
       <module name="springsecsection6" options="-parameters" />
       <module name="springsecsection7" options="-parameters" />
